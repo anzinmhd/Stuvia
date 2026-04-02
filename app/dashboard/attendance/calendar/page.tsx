@@ -23,6 +23,29 @@ export default async function AttendanceCalendarPage() {
     return redirect("/dashboard/attendance/setup");
   }
 
+  // Adapt the new WeeklyTimetable format from the backend to the UI format 
+  const mapDay = (dayData: any) => {
+    if (!dayData || !dayData.enabled || !dayData.periods) return [];
+    const maxPeriods = 6;
+    const arr = new Array(maxPeriods).fill(null);
+    dayData.periods.forEach((p: any) => {
+      if (p.index >= 0 && p.index < maxPeriods) {
+         arr[p.index] = { subjectId: p.subjectId, subjectName: p.label || p.subjectId };
+      }
+    });
+    return arr;
+  };
+
+  const adaptedTimetable = {
+    monday: mapDay(timetable.mon),
+    tuesday: mapDay(timetable.tue),
+    wednesday: mapDay(timetable.wed),
+    thursday: mapDay(timetable.thu),
+    friday: mapDay(timetable.fri),
+    saturday: mapDay(timetable.sat),
+    sunday: []
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 p-6 md:p-8">
       {/* Subtle background pattern */}
@@ -35,7 +58,7 @@ export default async function AttendanceCalendarPage() {
         <AttendanceCalendarView 
           userEmail={email}
           semester={semester}
-          timetable={timetable}
+          timetable={adaptedTimetable as any}
         />
       </div>
     </main>
