@@ -255,9 +255,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For support and questions:
 
-- Check the documentation
-- Review security guidelines in `SECURITY.md`
-- Create an issue on GitHub
+- **Documentation**: Explore our [Architecture Guide](docs/architecture.md), [Database Schema](docs/database.md), and [API Reference](docs/api.md).
+- **Setup**: Follow the [Deployment Guide](docs/deployment.md) for production configuration.
+- **Contributing**: Read our [Contributing Guidelines](CONTRIBUTING.md) and [Style Guide](docs/style-guide.md).
+- **Security**: Review security guidelines in `SECURITY.md`.
+- **Issues**: Create an issue on GitHub.
 
 ## 🔄 Changelog
 
